@@ -1,5 +1,11 @@
-# Full Stack Web and Multiplatform Mobile App Development
-by The Hong Kong University
-https://www.coursera.org/specializations/full-stack-mobile-app-development
+## Full Stack Web and Multiplatform Mobile App Development Specialization. In Progress
 
-Training projects
+Certificates:
+1. Bootstrap 4 
+2. Angular 2
+3. Ionic and Cordova
+4. NativeScript
+5. NodeJS, Express and MongoDB
+6. the Final Diploma 
+
+
