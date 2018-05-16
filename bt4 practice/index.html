@@ -69,7 +69,9 @@
               <img src="img/logo.png" class="img-fluid">
             </div>
             <div class="col-12 col-sm-6">
-              <a class="btn btn-sm btn-block bg-warning text-dark" href="#reserveForm">Reserve Table</a>
+              <a class="btn btn-sm btn-block bg-warning text-dark" href="#reserveForm" role="button">
+                Reserve Table
+              </a>
             </div>              
           </div>         
         </div>
@@ -142,24 +144,30 @@
                   <div class="row form-group">
                     <label for="date" class="col-12 col-md-2 col-form-label">Number of Guests</label>
                     <div class="col-12 col-md-10">
-                      <label class="col-form-label mr-4">
-                        <input type="radio" name="count" value="1"> 1
-                      </label>
-                      <label class="col-form-label mr-4">
-                        <input type="radio" name="count" value="2"> 2
-                      </label>
-                      <label class="col-form-label mr-4">
-                        <input type="radio" name="count" value="3"> 3
-                      </label>
-                      <label class="col-form-label mr-4">
-                        <input type="radio" name="count" value="4"> 4
-                      </label>
-                      <label class="col-form-label mr-4">
-                        <input type="radio" name="count" value="5"> 5
-                      </label>
-                      <label class="col-form-label">
-                        <input type="radio"  name="count" value="5"> 6
-                      </label>
+                      <div class="form-check form-check-inline mr-4">
+                        <input class="form-check-input" type="radio" name="count" value="1" id="inlineRadio1">
+                        <label class="form-check-label" for="inlineRadio1">1</label>
+                      </div>
+                      <div class="form-check form-check-inline mr-4">
+                        <input class="form-check-input" type="radio" name="count" value="2" id="inlineRadio2">
+                        <label class="form-check-label" for="inlineRadio2">2</label>
+                      </div>
+                      <div class="form-check form-check-inline mr-4">
+                        <input class="form-check-input" type="radio" name="count" value="3" id="inlineRadio3">
+                        <label class="form-check-label" for="inlineRadio3">3</label>
+                      </div>
+                      <div class="form-check form-check-inline mr-4">
+                        <input class="form-check-input" type="radio" name="count" value="4" id="inlineRadio4">
+                        <label class="form-check-label" for="inlineRadio4">4</label>
+                      </div>
+                      <div class="form-check form-check-inline mr-4">
+                        <input class="form-check-input" type="radio" name="count" value="5" id="inlineRadio5">
+                        <label class="form-check-label" for="inlineRadio5">5</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="count" value="6" id="inlineRadio6">
+                        <label class="form-check-label" for="inlineRadio6">6</label>
+                      </div>
                     </div>
                   </div>
                   <div class="row form-group">
@@ -184,7 +192,7 @@
                     </div> 
                   </div>
                   <div class="row form-group">
-                    <div class="offset-md-5 col-md-2">
+                    <div class="offset-md-2 col-md-10">
                       <button type="submit" class="btn btn-primary">Reserve</button>
                     </div>
                   </div>
