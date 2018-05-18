@@ -139,15 +139,13 @@
             <div class="form-row form-group">
               <label for="date" class="col-12 col-md-2 col-form-label">Section</label>
               <div class="col-12 col-md-10">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <input class="d-none" type="radio" name="smoke" value="6" id="nonSmok" checked>
-                    <label class="btn btn-success" for="nonSmok">Non-Smoking</label>
-                  </div>
-                  <div class="input-group-prepend">
-                    <input class="d-none" type="radio" name="smoke" value="6" id="yesSmok">
-                    <label class="btn btn-danger" for="yesSmok">Smoking</label>
-                  </div>
+                <div class="btn-group btn-group-toggle data-toggle="buttons">
+                  <label class="btn btn-success active">
+                    <input type="radio" name="smoke" id="noSmoke" checked> Non-Smoking
+                  </label>
+                  <label class="btn btn-danger">
+                    <input type="radio" name="smoke" id="yesSmoke"> Smoking
+                  </label>
                 </div>
               </div>
             </div>
