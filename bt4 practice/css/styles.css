@@ -1,56 +1,66 @@
 body {
-  padding: 50px 0 0 0;
+  padding: 50px 0px 0px 0px;
   z-index: 0;
 }
+
+.navbar-dark {
+  background-color: #512da8;
+}
+
+.tab-content {
+  bottom: 1px solid #ddd;
+  border-top-color: transparent;
+  padding: 10px;
+}
+
 .row-header {
   margin: 0 auto;
-  padding: 0 auto;
+  padding: 0px 0px;
 }
-.row-content,
-.row-content--long {
+
+.row-content {
   margin: 0 auto;
-  padding: 50px 0;
+  padding: 0px 0px;
   border-bottom: 1px ridge;
+  min-height: 100px;
 }
-.footer {
-  background-color: #d1c4e9;
-  margin: 0 auto;
-  padding: 20px 0;
-  margin: 0;
-}
+
 .jumbotron {
-  padding: 70px 30px;
   margin: 0 auto;
+  padding: 70px 30px;
   background: #9575cd;
   color: floralwhite;
 }
-.navbar-dark {
-  background-color: #512DA8;
+
+.footer {
+  background-color: #d1c4e9;
+  margin: 0 auto;
+  padding: 20px 0px;
 }
+
 address {
   font-size: 80%;
   margin: 0;
   color: #0f0f0f;
 }
-.tab-content {
-  border: 1px solid #ddd;
-  border-top: none;
-  padding: 10px;
-}
+
 .carousel {
-  background: #512da8;
+  background-color: #512da8;
 }
-.carousel-item {
+
+.carousel .carousel-item {
   height: 300px;
 }
-.carousel-item img {
+
+.carousel .carousel-item img {
   position: absolute;
   top: 0;
   left: 0;
   min-height: 300px;
 }
+
 #carouselButton {
   right: 0;
-  bottom: 0;
   position: absolute;
+  bottom: 0;
 }
