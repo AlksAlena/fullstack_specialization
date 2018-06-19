@@ -64,3 +64,23 @@ address {
   position: absolute;
   bottom: 0;
 }
+
+.modal-header {
+  background-color: #512da8;
+}
+
+.modal-header .modal-title {
+  color: floralwhite;
+}
+
+.modal-header button {
+  color: floralwhite;
+}
+
+.modal-header button:hover {
+  color: #2ff;
+}
+
+.modal-body {
+  background-color: #d1c4e9;
+}

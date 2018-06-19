@@ -60,3 +60,18 @@ address {
 	position: absolute;
 	bottom: 0;
 }
+.modal-header {
+	background-color: $background-dark;
+	.modal-title {
+		color: floralwhite;
+	}
+	button {
+		color: floralwhite;
+	}
+	button:hover {
+		color: #2ff;
+	}
+}
+.modal-body {
+	background-color: $background-pale;
+}

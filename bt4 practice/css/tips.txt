@@ -1,0 +1,9 @@
+$ lessc styles.less styles.css
+
+// Sass -g
+$ sass styles.scss styles.css
+
+// Sass -D ( https://github.com/sass/node-sass )
+$ npm i node-sass --save-dev
+// adding script "scss" in package.json, run it
+$ npm run scss
