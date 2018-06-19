@@ -6,14 +6,14 @@
 @carousel-item-height: 300px;
 
 .zero-margin(@pad-up-dn: 0px, @pad-left-right: 0px) {
-  margin: 0 auto;
+  margin: 0px auto;
   padding: @pad-up-dn @pad-left-right;
 }
 .row-header {
   .zero-margin();
 }
 .row-content {
-  .zero-margin();
+  .zero-margin(50px, 0px);
   border-bottom: 1px ridge;
   min-height: 100px;
 }
@@ -28,10 +28,10 @@
 }
 address {
   font-size: 80%;
-  margin: 0;
+  margin: 0px;
   color: #0f0f0f;
 }
-body{
+body {
   padding: 50px 0px 0px 0px;
   z-index: 0;
 }
@@ -57,9 +57,9 @@ body{
   }
 }
 #carouselButton {
-  right: 0;
+  right: 0px;
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
 }
 
 .modal-header {

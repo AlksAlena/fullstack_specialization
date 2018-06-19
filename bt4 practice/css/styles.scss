@@ -10,28 +10,28 @@ $carousel-item-height: 300px;
   padding: $pad-up-dn $pad-left-right;
 }
 .row-header{
-  @include zero-margin(0px,0px);
+  @include zero-margin(0px, 0px);
 }
 .row-content {
-  @include zero-margin(50px,0px);
+  @include zero-margin(50px, 0px);
   border-bottom: 1px ridge;
-  min-height: 400px;
+  min-height: 100px;
 }
-.footer{
+.footer {
   background-color: $background-pale;
   @include zero-margin(20px, 0px);
 }
 .jumbotron {
-  @include zero-margin(70px,30px);
+  @include zero-margin(70px, 30px);
   background: $background-light ;
   color: floralwhite;
 }
-address{
+address {
   font-size: 80%;
   margin: 0px;
   color: #0f0f0f;
 }
-body{
+body {
   padding: 50px 0px 0px 0px;
   z-index: 0;
 }
