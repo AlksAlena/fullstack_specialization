@@ -5,73 +5,75 @@ $background-pale: #d1c4e9;
 
 $carousel-item-height: 300px;
 
-body {
-	padding: 50px 0px 0px 0px;
-	z-index: 0;
-}
-.navbar-dark {
-	background-color: $background-dark;
-}
-.tab-content {
-	bottom: 1px solid $lt-gray;
-	border-top-color: transparent;
-	padding: 10px;
-}
 @mixin zero-margin($pad-up-dn, $pad-left-right) {
-	margin: 0 auto;
-	padding: $pad-up-dn $pad-left-right;
+  margin: 0px auto;
+  padding: $pad-up-dn $pad-left-right;
 }
-.row-header {
-	@include zero-margin(0px, 0px);
+.row-header{
+  @include zero-margin(0px,0px);
 }
 .row-content {
-	@include zero-margin(0px, 0px);
-	border-bottom: 1px ridge;
-	min-height: 100px;
+  @include zero-margin(50px,0px);
+  border-bottom: 1px ridge;
+  min-height: 400px;
+}
+.footer{
+  background-color: $background-pale;
+  @include zero-margin(20px, 0px);
 }
 .jumbotron {
-	@include zero-margin(70px, 30px);
-	background: $background-light;
-	color: floralwhite;
+  @include zero-margin(70px,30px);
+  background: $background-light ;
+  color: floralwhite;
 }
-.footer {
-	background-color: $background-pale;
-	@include zero-margin(20px, 0px);
+address{
+  font-size: 80%;
+  margin: 0px;
+  color: #0f0f0f;
 }
-address {
-	font-size: 80%;
-	margin: 0;
-	color: #0f0f0f;
+body{
+  padding: 50px 0px 0px 0px;
+  z-index: 0;
+}
+.navbar-dark {
+  background-color: $background-dark;
+}
+.tab-content {
+  border-left: 1px solid $lt-gray;
+  border-right: 1px solid $lt-gray;
+  border-bottom: 1px solid $lt-gray;
+  padding: 10px;
 }
 .carousel {
-	background-color: $background-dark;
-	.carousel-item {
-		height: $carousel-item-height;
-		img {
-			position: absolute;
-			top: 0;
-			left: 0;
-			min-height: 300px;
-		}
-	}
+  background: $background-dark;
+  .carousel-item {
+    height: $carousel-item-height;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-height: 300px;
+    }
+  }
 }
 #carouselButton {
-	right: 0;
-	position: absolute;
-	bottom: 0;
+  right: 0px;
+  position: absolute;
+  bottom: 0px;
 }
+
 .modal-header {
-	background-color: $background-dark;
-	.modal-title {
-		color: floralwhite;
-	}
-	button {
-		color: floralwhite;
-	}
-	button:hover {
-		color: #2ff;
-	}
+  background-color: $background-dark;
+  .modal-title {
+    color: floralwhite;
+  }
+  button {
+    color: floralwhite;
+  }
+  button:hover {
+    color: #2ff;
+  }
 }
 .modal-body {
-	background-color: $background-pale;
+  background-color: $background-pale;
 }
