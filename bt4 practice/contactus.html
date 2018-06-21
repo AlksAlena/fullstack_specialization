@@ -49,7 +49,7 @@
           </li>
         </ul>
         <span class="navbar-text">
-          <a data-toggle="modal" data-target="#loginModal">
+          <a id="loginButton">
             <span class="fa fa-sign-in"></span> Login
           </a>
         </span>
@@ -177,11 +177,7 @@
             <img src="img/logo.png" class="img-fluid">
         </div>
         <div class="col-12 col-sm align-self-center">
-          <a class="btn btn-sm btn-block bg-warning text-dark" 
-            role="button" 
-            data-toggle="modal" 
-            data-target="#reserveModal"
-          >
+          <a id="reserveButton" class="btn btn-sm btn-block bg-warning text-dark" role="button">
             Reserve Table
           </a>
         </div>
@@ -402,6 +398,7 @@
   <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
   <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
