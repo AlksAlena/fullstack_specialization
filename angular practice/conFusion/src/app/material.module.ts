@@ -7,7 +7,8 @@ import {
   MatIconModule,
   MatCardModule,
   MatCheckboxModule,
-  MatChipsModule
+  MatChipsModule,
+  MatListModule
 } from '@angular/material';
 
 const MAT_MODULES  = [
@@ -17,7 +18,8 @@ const MAT_MODULES  = [
   MatButtonModule,
   MatCardModule,
   MatCheckboxModule,
-  MatChipsModule
+  MatChipsModule,
+  MatListModule
 ];
 
 @NgModule({
