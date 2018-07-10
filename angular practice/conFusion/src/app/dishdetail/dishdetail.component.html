@@ -29,7 +29,7 @@
       <h2>Comments</h2>
       <mat-list-item *ngFor="let item of dish.comments">
         <p matLine>{{ item.comment }}</p>
-        <p matLine>{{ item.rating }}</p>
+        <p matLine>{{ item.rating }} Stars</p>
         <p matLine>
           <span>-- {{ item.author }} </span>
           <span>{{ item.date | date:local }}</span>
