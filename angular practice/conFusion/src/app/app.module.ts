@@ -18,6 +18,7 @@ import { AboutComponent } from './about/about.component';
 
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
+import { LeaderService } from './services/leader.service';
 
 import { AppRoutingModule } from './app-routing/app-routing.module'
 
@@ -41,7 +42,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module'
   ],
   providers: [ 
     DishService, 
-    PromotionService
+    PromotionService,
+    LeaderService
   ],
   bootstrap: [AppComponent]
 })
