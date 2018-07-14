@@ -7,7 +7,11 @@ import {
   MatCardModule,
   MatListModule,
   MatGridListModule,
-  MatButtonModule
+  MatButtonModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 const MAT_MODULES  = [
@@ -17,7 +21,11 @@ const MAT_MODULES  = [
   MatCardModule,
   MatListModule,
   MatGridListModule,
-  MatButtonModule
+  MatButtonModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatCheckboxModule
 ];
 
 @NgModule({
