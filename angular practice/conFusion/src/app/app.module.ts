@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 // import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -40,7 +41,8 @@ import { LoginComponent } from './login/login.component'
     FlexLayoutModule,
     MaterialModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ 
     DishService, 

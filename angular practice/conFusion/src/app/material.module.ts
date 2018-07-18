@@ -11,7 +11,9 @@ import {
   MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatSelectModule,
+  MatSlideToggleModule
 } from '@angular/material';
 
 const MAT_MODULES  = [
@@ -25,7 +27,9 @@ const MAT_MODULES  = [
   MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatSelectModule,
+  MatSlideToggleModule
 ];
 
 @NgModule({
