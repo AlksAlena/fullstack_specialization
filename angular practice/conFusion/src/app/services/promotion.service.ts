@@ -18,10 +18,10 @@ export class PromotionService {
   }
 
   getPromotion(id: number): Observable<Promotion> {
-  	return of(PROMOTIONS.filter((promo) => (promo.id === id))[0]).pipe(delay(2000));
+    return of(PROMOTIONS.filter((promo) => (promo.id === id))[0]).pipe(delay(2000));
   } 
   
   getFeaturedPromotion(): Observable<Promotion> {
-  	return of(PROMOTIONS.filter((promo) => (promo.featured))[0]).pipe(delay(2000));
+    return of(PROMOTIONS.filter((promo) => (promo.featured))[0]).pipe(delay(2000));
   } 
 }
