@@ -6,7 +6,7 @@
   fxLayoutGap="10px" 
   fxLayoutGap.xs="0">
   
-  <div fxFlex="40" *ngIf="dish">
+  <div fxFlex="40" *ngIf="dish" fxFlexAlign="start">
     <mat-card>
       <mat-card-header>
         <mat-card-title>
@@ -43,6 +43,55 @@
         </p>
       </mat-list-item>
     </mat-list>
+
+    <mat-list *ngIf="previewComment.comment">
+      <mat-list-item>
+        <p matLine>{{ previewComment.comment }}</p>
+        <p matLine>{{ previewComment.rating }} Stars</p>
+        <p matLine><span>-- {{ previewComment.author }}</span></p>
+      </mat-list-item>
+    </mat-list>
+    
+    <form novalidate
+      [formGroup]="commentForm"
+      #cform="ngForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <p>
+        <mat-form-field class="full-width">
+          <input matInput 
+          placeholder="Name" 
+          type="text"
+          formControlName="author"
+          >
+          <mat-error *ngIf="formErrors.author">{{formErrors.author}}</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-slider 
+          min="1" 
+          max="5" 
+          step="1" 
+          value="5"
+          thumbLabel 
+          tickInterval="1"
+          formControlName="rating"
+        ></mat-slider>
+      </p>
+      <p>
+        <mat-form-field class="full-width">
+          <textarea matInput 
+            placeholder="Your Comment" 
+            rows=6
+            formControlName="comment"
+          ></textarea>
+          <mat-error *ngIf="formErrors.comment">{{formErrors.comment}}</mat-error>
+        </mat-form-field>
+      </p>
+      <button type="submit" mat-button class="background-primary text-floral-white">
+        Submit
+      </button>
+    </form>
   </div>
 
   <div [hidden]="dish">

@@ -14,7 +14,8 @@ import {
   MatCheckboxModule,
   MatSelectModule,
   MatSlideToggleModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatSliderModule
 } from '@angular/material';
 
 const MAT_MODULES  = [
@@ -31,7 +32,8 @@ const MAT_MODULES  = [
   MatCheckboxModule,
   MatSelectModule,
   MatSlideToggleModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatSliderModule
 ];
 
 @NgModule({
