@@ -42,6 +42,7 @@
       [formGroup]="feedbackForm" 
       #fform="ngForm" 
       (ngSubmit)="onSubmit()"
+      [hidden]="isSubmitForm || lastFeedback || serverErrMess"
     >
       <p>
         <mat-form-field class="half-width">
@@ -114,5 +115,26 @@
         Submit
       </button>
     </form>
+
+    <div *ngIf="lastFeedback" [@expand]>
+      <h4>Your Submission</h4>
+      <p matLine>First Name: {{lastFeedback.firstname}}</p>
+      <p matLine>Last Name: {{lastFeedback.lastname}}</p>
+      <p matLine>Tel. Number: {{lastFeedback.telnum}}</p>
+      <p matLine>Email: {{lastFeedback.email}}</p>
+      <p matLine>Contact you?: {{lastFeedback.agree}}</p>
+      <p matLine>How?: {{lastFeedback.contacttype}}</p>
+      <p matLine>Feedback: {{lastFeedback.message}}</p>
+    </div>
+
+    <div *ngIf="serverErrMess">
+      <h4>Sorry, your feedback was not sent, please try later</h4>
+      <p>{{serverErrMess.message}}</p>
+    </div>
+  </div>
+
+  <div *ngIf="isSubmitForm" [hidden]="lastFeedback || serverErrMess">
+    <h4>Submitting Form</h4>
+    <mat-spinner></mat-spinner>
   </div>
 </div>

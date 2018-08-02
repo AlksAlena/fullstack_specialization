@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Feedback, ContactType } from '../shared/feedback';
-import { flyInOut } from '../animations/app.animation';
+import { flyInOut, expand } from '../animations/app.animation';
+
+import { FeedbackService } from '../services/feedback.service';
 
 @Component({
   selector: 'app-contact',
@@ -12,7 +14,8 @@ import { flyInOut } from '../animations/app.animation';
   'style': 'display: block;'
   },
   animations: [
-    flyInOut()
+    flyInOut(),
+    expand()
   ]
 })
 export class ContactComponent implements OnInit {
@@ -20,6 +23,7 @@ export class ContactComponent implements OnInit {
 
   feedbackForm: FormGroup;
   feedback: Feedback;
+  lastFeedback = null;
   contactType = ContactType;
   formErrors = {
     'firstname': '',
@@ -47,8 +51,13 @@ export class ContactComponent implements OnInit {
       'email':         'Email not in valid format.'
     },
   };
+  serverErrMess: string;
+  isSubmitForm: boolean = false;
 
-  constructor(private fb: FormBuilder) { // inject FormBuilder
+  constructor(
+    private fb: FormBuilder,
+    private feedbackService: FeedbackService
+  ) { // inject FormBuilder
     this.createForm();
   }
 
@@ -94,6 +103,19 @@ export class ContactComponent implements OnInit {
 
   onSubmit() {
     this.feedback = this.feedbackForm.value;
+    this.isSubmitForm = true;
+    this.feedbackService.submitFeedback(this.feedback)
+      .subscribe(
+        feedback => {
+          this.isSubmitForm = false;
+          this.lastFeedback = feedback;
+          setTimeout(() => this.lastFeedback = null, 5000);
+        },
+        errmess => {
+          this.isSubmitForm = false;
+          this.serverErrMess = <any>errmess;
+        }
+      );
     this.feedbackForm.reset({
       firstname: '',
       lastname: '',
