@@ -1,3 +1,9 @@
+// created with express-generator 
+// npm install express-generator -g
+// express conFusionServer
+// npm i
+// npm start
+// npm i bluebird mongoose mongoose-currency --save
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -9,6 +15,19 @@ var usersRouter = require('./routes/users');
 var dishRouter = require('./routes/dishRouter');
 var leaderRouter = require('./routes/leaderRouter');
 var promoRouter = require('./routes/promoRouter');
+
+// schemas for data
+const mongoose = require('mongoose');
+// models of schemas for data in database
+const Dishes = require('./models/dishes');
+
+const url = 'mongodb://localhost:27017/conFusion';
+const connect = mongoose.connect(url, { useNewUrlParser: true });
+
+// database connect
+connect.then((db) => {
+  console.log('Connected correctly to server');
+}, (err) => { console.log(err); });
 
 var app = express();
 
@@ -24,6 +43,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+// custom routers, witch process various http-methods: GET/POST/PUT/DELETE
+// for each endpoint
 app.use('/dishes', dishRouter);
 app.use('/leaders', leaderRouter);
 app.use('/promotions', promoRouter);
