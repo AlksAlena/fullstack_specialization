@@ -90,7 +90,7 @@ dishRouter.route('/:dishId')
           res.setHeader('Content-Type', 'application/json');
           res.json(dish.comments);
         } else {
-          err = new Error('Dish ' + req.params.dishId + ' not fiund');
+          err = new Error('Dish ' + req.params.dishId + ' not found');
           err.status = 404;
           return next(err);
         }        
