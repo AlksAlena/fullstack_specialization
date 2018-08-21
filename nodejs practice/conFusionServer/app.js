@@ -41,31 +41,48 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-function auth(req, res, next) {
-  console.log(req.headers);
-  var authHeader = req.headers.authorization;
-  if (!authHeader) {
-    var err = new Error('You are not authenticated!');
-    res.setHeader('WWW-Authenticate', 'Basic');
-    err.status = 401;
-    return next(err);
-  }
-  // first elem - 'Basic', second elem - login:password in base64-coded
-  var auth = new Buffer(authHeader.split(' ')[1], 'base64').toString().split(':');
-  var username = auth[0];
-  var password = auth[1];
+app.use(cookieParser('12345-67890-09876-54321'));
 
-  if (username === 'admin' && password === 'password') {
-    next();
-  } else {
-    var err = new Error('You are not authenticated!');
-    res.setHeader('WWW-Authenticate', 'Basic');
-    err.status = 401;
-    return next(err);
+function auth (req, res, next) {
+  // cookies does not exist
+  if (!req.signedCookies.user) {
+    var authHeader = req.headers.authorization;
+    // authorization header does not exist - error
+    if (!authHeader) {
+      var err = new Error('You are not authenticated!');
+      res.setHeader('WWW-Authenticate', 'Basic');              
+      err.status = 401;
+      next(err);
+      return;
+    }
+    // parse authorization header
+    // authorization header has format: 'Basic login:password'
+    // so = ['Basic']['login:password']
+    var auth = new Buffer(authHeader.split(' ')[1], 'base64').toString().split(':');
+    var user = auth[0];
+    var pass = auth[1];
+
+    // if authorization is successful - create cookies
+    if (user == 'admin' && pass == 'password') { 
+      res.cookie('user','admin',{signed: true});
+      // authorized
+      next();
+    } else {
+      var err = new Error('You are not authenticated!');
+      res.setHeader('WWW-Authenticate', 'Basic');              
+      err.status = 401;
+      next(err);
+    }
+  } else { // cookies does exist - check
+    if (req.signedCookies.user === 'admin') {
+      next();
+    } else {
+      var err = new Error('You are not authenticated!');
+      err.status = 401;
+      next(err);
+    }
   }
 }
-
-app.use(cookieParser());
 
 app.use(auth);
 
