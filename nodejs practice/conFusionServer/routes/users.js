@@ -8,8 +8,14 @@ var router = express.Router();
 router.use(bodyParser.json());
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/', authenticate.verifyUser, authenticate.verifyAdmin, function(req, res, next) {
+  User.find({})
+    .then((users) => {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/json');
+      res.json(users);
+    }, (err) => next(err))
+    .catch((err) => next(err));
 });
 
 /* SIGN UP */
@@ -41,9 +47,15 @@ router.post('/signup', (req, res, next) => {
 });
 
 /* LOG IN */
+// Call to the passport.authenticate('local') when this is done in the login stage.
+// The passport.authenticate local will automatically add the user property 
+// to the request message. So it'll add req.user. And then the passport session 
+// that we have done here will automatically serialize that user information, 
+// and then store it in the session. 
 router.post('/login', passport.authenticate('local'), (req, res) => {
   // So to issue the JSON Web Token, 
-  // you first need to authenticate the user using one of the other strategies
+  // you first need to authenticate the user using one of the other strategies,
+  // example, 'local' strategy
   var token = authenticate.getToken({_id: req.user._id});
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');

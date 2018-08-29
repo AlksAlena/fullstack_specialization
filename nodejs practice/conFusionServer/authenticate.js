@@ -8,19 +8,22 @@ var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 
 var config = require('./config.js');
 
+const Dishes = require('./models/dishes');
+
+// use static authenticate method of model in LocalStrategy
+// authenticate() Generates a function that is used in Passport's LocalStrategy
+// if the name of the strategy is not specified, then 'local'
 exports.local = passport.use(new LocalStrategy(User.authenticate()));
 // using sessions to track users in our application, 
 // we need to serialize and deserialize the user
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// create JSON Web Token: 
+// user is a payload, privateKey and how long the JSON Web Token will be valid
 exports.getToken = function(user) {
-  // create JSON Web Token
-  // param[0] user is the payload
-  // param[1] is privateKey
-  // param[2] is how long the JSON Web Token will be valid
   return jwt.sign(user, config.secretKey,
-    {expiresIn: 3600});
+    {expiresIn: 360000});
 };
 
 // options for web tokens strategy
@@ -30,6 +33,9 @@ opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 // secretKey which I am going to be using within my strategy for the sign in
 opts.secretOrKey = config.secretKey;
 
+// So, when passport parses the request message, 
+// it will use the strategy and then extract information 
+// and load it onto our request message
 exports.jwtPassport = passport.use(new JwtStrategy(opts,
   (jwt_payload, done) => {
     console.log("JWT payload: ", jwt_payload);
@@ -46,5 +52,28 @@ exports.jwtPassport = passport.use(new JwtStrategy(opts,
 ));
 
 // we are not going to make creating sessions in this case
-// because "session: false"
+// so "session: false"
 exports.verifyUser = passport.authenticate('jwt', {session: false});
+
+exports.verifyAdmin = function(req, res, next) {
+  if (req.user.admin) next();
+  else {
+    var err = new Error('You are not authorized to perform this operation!');
+    err.status = 403;
+    next(err);
+  }
+}
+
+exports.verifyOwner = function(req, res, next) {
+  Dishes.findById(req.params.dishId)
+    .then((dish) => {
+      if (req.user._id.equals(dish.comments.id(req.params.commentId).author)) {
+        next();
+      } else {
+        var err = new Error('You are not owner this comment!');
+        err.status = 403;
+        next(err);
+      }
+    }, (err) => next(err))
+    .catch((err) => next(err));
+}
