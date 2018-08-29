@@ -38,6 +38,19 @@ connect.then((db) => {
 
 var app = express();
 
+// redirect any traffic coming to the unsecured port, 
+// that is, port number 3,000. It'll redirect that request to the secure port
+app.all('*', (req, res, next) => {
+  // req.secure - the flag is by definition true value for all secure requests
+  if (req.secure) return next();
+  else {
+    // 307 here represents that the target resource resides temporarily 
+    // under a different URI. And the user agent must not change the 
+    // request method if it performs an automatic redirection to that URI
+    res.redirect(307, 'https://' + req.hostname + ':' + app.get('secPort') + req.url);
+  }
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

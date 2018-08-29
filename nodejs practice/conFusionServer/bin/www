@@ -7,6 +7,8 @@
 var app = require('../app');
 var debug = require('debug')('confusionserver:server');
 var http = require('http');
+var https = require('https');
+var fs = require('fs');
 
 /**
  * Get port from environment and store in Express.
@@ -14,6 +16,21 @@ var http = require('http');
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
+/*
+  In a standard server, if your server is acting 
+  as a web server, your HTTP protocol will be running 
+  at port number 80 on your server. And the secure 
+  HTTP will run on port number 443. Now you would 
+  normally not want to use those reserved ports in a 
+  development application that we are doing here in 
+  this course. So we're going to be using these two 
+  functions for configuring our server here. So I'm 
+  going to be running the HTTPS server at port number 3443, 
+  so 3000 plus 443. So that's the reason why I am declaring 
+  this secure port as port+443, so that our HTTPS server 
+  will be running at port number 443
+*/
+app.set('secPort', port + 443);
 
 /**
  * Create HTTP server.
@@ -28,6 +45,21 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+// options for secure HTTPS server
+var options = {
+  key: fs.readFileSync(__dirname + '/private.key'),
+  cert: fs.readFileSync(__dirname + '/certificate.pem')
+};
+
+var secureServer = https.createServer(options, app);
+
+secureServer.listen(app.get('secPort'), () => {
+  console.log('Secure server listening on port ', app.get('secPort'));
+});
+
+secureServer.on('error', onError);
+secureServer.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
