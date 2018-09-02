@@ -3,12 +3,13 @@ const bodyParser = require('body-parser');
 var User = require('../models/user');
 var passport = require('passport');
 var authenticate = require('../authenticate');
+const cors = require('./cors');
 
 var router = express.Router();
 router.use(bodyParser.json());
 
 /* GET users listing. */
-router.get('/', authenticate.verifyUser, authenticate.verifyAdmin, function(req, res, next) {
+router.get('/', cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, function(req, res, next) {
   User.find({})
     .then((users) => {
       res.statusCode = 200;
@@ -19,7 +20,7 @@ router.get('/', authenticate.verifyUser, authenticate.verifyAdmin, function(req,
 });
 
 /* SIGN UP */
-router.post('/signup', (req, res, next) => {
+router.post('/signup', cors.corsWithOptions, (req, res, next) => {
   User.register(new User({username: req.body.username}), 
     req.body.password, (err, user) => {
     if (err) {
@@ -52,7 +53,7 @@ router.post('/signup', (req, res, next) => {
 // to the request message. So it'll add req.user. And then the passport session 
 // that we have done here will automatically serialize that user information, 
 // and then store it in the session. 
-router.post('/login', passport.authenticate('local'), (req, res) => {
+router.post('/login', cors.corsWithOptions, passport.authenticate('local'), (req, res) => {
   // So to issue the JSON Web Token, 
   // you first need to authenticate the user using one of the other strategies,
   // example, 'local' strategy
@@ -63,7 +64,7 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
 });
 
 /* LOG OUT */
-router.get('/logout', (req, res) => {
+router.get('/logout', cors.corsWithOptions, (req, res) => {
   if (req.session) {
     req.session.destroy();
     res.clearCookie('session-id');
