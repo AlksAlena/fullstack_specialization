@@ -14,6 +14,7 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 import { MovieService } from './services/movie.service';
 import { FavoriteMoviesComponent } from './favorite-movies/favorite-movies.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FavoriteMoviesComponent } from './favorite-movies/favorite-movies.compo
     AsideComponent,
     PopularMoviesComponent,
     MovieDetailComponent,
-    FavoriteMoviesComponent
+    FavoriteMoviesComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
