@@ -19,4 +19,12 @@ app-root {
 }
 app-main {
   flex: 1;
+  display: flex;
+  padding: 20px;
+}
+.content {
+  margin: 0 20px 20px;
+}
+.content-title {
+  flex-basis: 100%;
 }

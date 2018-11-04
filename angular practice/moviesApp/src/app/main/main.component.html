@@ -1,20 +1,5 @@
-<main class="container">
-  <h2 class="content-title">Popular movies</h2>
-
-  <div class="content-popular">
-    <mat-grid-list cols="5" rowHeight="150px" gutterSize="2rem">
-      <mat-grid-tile *ngFor="let movie of movies">
-          <p>overview: {{ movie.overview }}</p>
-          <img src="{{ movie.poster_path }}" alt="{{ movie.title }}" height="200">
-          <mat-grid-tile-footer>
-            <h1 matLine>{{ movie.title }}</h1>
-            <h2 matLine>genres: {{ movie.genre_ids }}</h2>
-          </mat-grid-tile-footer>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </div>
-
-  <app-aside></app-aside>
+<app-popular-movies></app-popular-movies>
+<app-aside></app-aside>
 
 <!--   <div class="content-popular-select">
     <mat-card *ngIf="selectedMovie">
@@ -33,4 +18,3 @@
       </mat-card-actions>
     </mat-card>
   </div> -->
-</main>
