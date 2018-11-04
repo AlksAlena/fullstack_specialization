@@ -1,0 +1,22 @@
+.container {
+  margin: 0 20px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.content-title {
+  flex-basis: 100%;
+}
+.content-popular {
+  flex: 1 0 80%;
+  margin-right: 50px;
+}
+mat-grid-tile {
+  background: lightblue;
+}
+mat-grid-tile:hover {
+  cursor: pointer;
+}
+.content-popular-select {
+  flex-basis: 100%;
+}
