@@ -9,6 +9,9 @@ import { FooterComponent } from './footer/footer.component';
 import { MainComponent } from './main/main.component';
 import { AsideComponent } from './aside/aside.component';
 import { PopularMoviesComponent } from './popular-movies/popular-movies.component';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
+
+import { MovieService } from './services/movie.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,8 @@ import { PopularMoviesComponent } from './popular-movies/popular-movies.componen
     FooterComponent,
     MainComponent,
     AsideComponent,
-    PopularMoviesComponent
+    PopularMoviesComponent,
+    MovieDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +29,7 @@ import { PopularMoviesComponent } from './popular-movies/popular-movies.componen
     MaterialModule
   ],
   providers: [
+    MovieService
   ],
   bootstrap: [AppComponent]
 })

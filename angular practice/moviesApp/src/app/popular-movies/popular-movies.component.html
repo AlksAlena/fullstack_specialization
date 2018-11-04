@@ -2,7 +2,10 @@
   <h2 class="content-title">Popular movies</h2>
 
   <mat-grid-list cols="5" rowHeight="150px" gutterSize="2rem">
-    <mat-grid-tile *ngFor="let movie of movies">
+    <mat-grid-tile 
+      *ngFor="let movie of movies" 
+      (click)="onSelect(movie)"
+    >
         <p>overview: {{ movie.overview }}</p>
         <img src="{{ movie.poster_path }}" alt="{{ movie.title }}" height="200">
         <mat-grid-tile-footer>
@@ -12,3 +15,5 @@
     </mat-grid-tile>
   </mat-grid-list>
 </div>
+
+<app-movie-detail [movie]="selectedMovie"></app-movie-detail>

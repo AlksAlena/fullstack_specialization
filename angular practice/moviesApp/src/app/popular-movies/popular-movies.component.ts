@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../shared/movie';
-import { MOVIES } from '../shared/movies';
+import { MovieService } from '../services/movie.service';
 
 @Component({
   selector: 'app-popular-movies',
@@ -8,12 +8,17 @@ import { MOVIES } from '../shared/movies';
   styleUrls: ['./popular-movies.component.scss']
 })
 export class PopularMoviesComponent implements OnInit {
-  movies: Movie[] = MOVIES;
-  //selectedMovie = MOVIES[0];
+  movies: Movie[];
+  selectedMovie: Movie;
   
-  constructor() { }
+  constructor(private movieService: MovieService) { }
 
   ngOnInit() {
+    this.movies = this.movieService.getPopularMovies();
+  }
+
+  onSelect(movie: Movie) {
+    this.selectedMovie = movie;
   }
 
 }
