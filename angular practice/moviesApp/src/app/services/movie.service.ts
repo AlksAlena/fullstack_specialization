@@ -13,15 +13,15 @@ export class MovieService {
     return MOVIES;
   }
 
-  getFavoritesMovies(): Movie[] {
+  getFavoriteMovies(): Movie[] {
     return MOVIES;
   }
 
-  addFavoritesMovies(id: number): void {
+  addFavoriteMovies(id: number): void {
     console.log('Movie is successful added!')
   }
 
-  deleteFavoritesMovies(id: number): void {
+  deleteFavoriteMovies(id: number): void {
     console.log('Movie is successful deleted!')
   }
 }

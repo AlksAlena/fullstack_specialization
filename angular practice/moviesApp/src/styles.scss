@@ -1,6 +1,6 @@
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
-// @import 'variables';
-// @import '../node_modules/font-awesome/scss/font-awesome';
+@import 'variables';
+@import '../node_modules/font-awesome/scss/font-awesome';
 
 html {
   height: 100%;
@@ -12,6 +12,9 @@ body {
   min-height: 100%;
   display: flex;
 }
+.fa {
+  margin-right: 10px;
+}
 app-root {
   flex: 1;
   display: flex;
@@ -21,6 +24,12 @@ app-main {
   flex: 1;
   display: flex;
   padding: 20px;
+}
+app-popular-movies,
+app-favorite-movies,
+app-movie-detail {
+  flex: 1 0 80%;
+  padding: 0 20px 20px;
 }
 .content {
   margin: 0 20px 20px;
