@@ -13,15 +13,49 @@ export class MovieService {
     return MOVIES;
   }
 
+  getPopularMovie(id: number): Movie {
+    return MOVIES.filter((movie) => (movie.id === id))[0];
+  }
+
   getFavoriteMovies(): Movie[] {
-    return MOVIES;
+    let favoriteMoviesObject = this.downloadFromLocalStorage("favoriteMovies");
+    let favoriteMoviesList = [];
+    for (let key in favoriteMoviesObject) {
+      favoriteMoviesList.push(favoriteMoviesObject[key]);   
+    }
+    return favoriteMoviesList;
   }
 
-  addFavoriteMovies(id: number): void {
-    console.log('Movie is successful added!')
+  addFavoriteMovie(id: number, movie: Movie): void {
+    let favoriteMoviesObject = this.downloadFromLocalStorage("favoriteMovies");
+    if (favoriteMoviesObject) {
+      favoriteMoviesObject[id] = movie;
+      this.uploadToLocalStorage("favoriteMovies", favoriteMoviesObject);
+    } else {
+      let newFavoriteMoviesList = {};
+      newFavoriteMoviesList[id] = movie;
+      this.uploadToLocalStorage("favoriteMovies", newFavoriteMoviesList);
+    }
   }
 
-  deleteFavoriteMovies(id: number): void {
-    console.log('Movie is successful deleted!')
+  deleteFavoriteMovie(id: number): void {
+    let favoriteMoviesObject = this.downloadFromLocalStorage("favoriteMovies");
+    let key = id.toString();
+    if (key in favoriteMoviesObject) {
+      delete favoriteMoviesObject[key];
+      this.uploadToLocalStorage("favoriteMovies", favoriteMoviesObject);
+    }
+  }
+
+  downloadFromLocalStorage(key) {
+    let value = JSON.parse(localStorage.getItem(key))
+    return value;
+  }
+
+  uploadToLocalStorage(key, value) {
+    let serialValue = JSON.stringify(value);
+    localStorage.setItem(key, serialValue);
   }
 }
+
+ 

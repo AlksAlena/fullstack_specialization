@@ -1,29 +1,36 @@
-
-<!--   <div class="content-popular-select">
-    <mat-card *ngIf="selectedMovie">
-      <mat-card-header>
-        <mat-card-title>
-          <h3>{{selectedMovie.title | uppercase}}</h3>
-        </mat-card-title>
-      </mat-card-header>
-      <img mat-card-image src="{{ selectedMovie.poster_path }}" alt="{{ selectedDish.title }}">
-      <mat-card-content>
-        <p>{{ selectedMovie.overview }}</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions>
-    </mat-card>
-  </div> -->
-
 <div class="content">
-  <h2 class="content-title">Select movies</h2>
+  <h2 class="content-title">Details of the movie</h2>
 
-  <p>
-    <span>title: {{ movie.title }}</span><br>
-    <span>genres: {{ movie.genre_ids }}</span><br>
-    <span>adult: {{ movie.adult }}</span><br>
-    <span>overview: {{ movie.overview }}</span><br>
-  </p>
+  <mat-card *ngIf="movie">
+    <mat-card-header>
+      <mat-card-title>
+        <h3>{{ movie.title | uppercase }}</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="/assets/CarSeat.png" alt="{{ movie.title }}">
+    <mat-card-content>
+      <p>{{ movie.overview }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="addFavoriteMovie(movie.id, movie)">
+        <i class="fa fa-star-o lg"></i>LIKE
+      </button>
+      <button mat-button (click)="deleteFavoriteMovie(movie.id)">
+        <i class="fa fa-star-o lg"></i>UNLIKE
+      </button>
+      <button mat-button (click)="goBack()">BACK</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card *ngIf="movie">
+    <mat-card-header>
+      <mat-card-title>
+        <h3>RECOMMENDATIONS</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="/assets/CarSeat.png" alt="{{ movie.title }}">
+    <mat-card-content>
+      <p>{{ movie.overview }}</p>
+    </mat-card-content>
+  </mat-card>
 </div>
