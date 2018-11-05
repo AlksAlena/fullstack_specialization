@@ -4,16 +4,15 @@
   <mat-grid-list cols="5" rowHeight="150px" gutterSize="2rem">
     <mat-grid-tile 
       *ngFor="let movie of movies" 
-      (click)="onSelect(movie)"
+      [routerLink]="['/moviedetail', movie.id]" 
     >
-        <p>overview: {{ movie.overview }}</p>
-        <img src="{{ movie.poster_path }}" alt="{{ movie.title }}" height="200">
+        <img src="/assets/CarSeat.png" alt="{{ movie.title }}" height="200">
         <mat-grid-tile-footer>
           <h1 matLine>{{ movie.title }}</h1>
           <h2 matLine>genres: {{ movie.genre_ids }}</h2>
+          <i class="fa fa-star fa-lg"></i>
+          <i class="fa fa-star-o fa-lg"></i>
         </mat-grid-tile-footer>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
-
-<app-movie-detail [movie]="selectedMovie"></app-movie-detail>

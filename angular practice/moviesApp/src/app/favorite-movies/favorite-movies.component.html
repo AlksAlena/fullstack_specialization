@@ -3,8 +3,7 @@
 
   <mat-grid-list cols="5" rowHeight="150px" gutterSize="2rem">
     <mat-grid-tile *ngFor="let movie of movies">
-        <p>overview: {{ movie.overview }}</p>
-        <img src="{{ movie.poster_path }}" alt="{{ movie.title }}" height="200">
+        <img src="/assets/CarSeat.png" alt="{{ movie.title }}" height="200">
         <mat-grid-tile-footer>
           <h1 matLine>{{ movie.title }}</h1>
           <h2 matLine>genres: {{ movie.genre_ids }}</h2>
