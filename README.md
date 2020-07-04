@@ -1,4 +1,4 @@
-## Full Stack Web and Multiplatform Mobile App Development Specialization. In Progress
+## Full Stack Web and Multiplatform Mobile App Development Specialization. Paused
 
 Certificates:
 1. Bootstrap 4 https://www.coursera.org/account/accomplishments/verify/285SFMJWE8J2
